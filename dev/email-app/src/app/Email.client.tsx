@@ -2,7 +2,7 @@
 
 import Sidebar from "./Sidebar.client";
 import ComposeModal from "./ComposeModal.client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { ListInboxResponse, listInbox, deleteEmail } from '@email-app/email'
 import dataConnect from "@/data-connect";
 
@@ -18,12 +18,16 @@ export default function Email({initialEmails, uid, host}: Props) {
 	const [emails, setEmails] = useState<ListInboxResponse['emails']>([]);
 	const dc = dataConnect(host);
 
-  useEffect(() => {
-    listInbox(dc, { uid })
-      .then(res => {
-        setEmails(res.data.emails);
-      })
-  }, [emails, isComposeOpen]);
+	const triggerFetch = useCallback(() => {
+		listInbox(dc, { uid })
+			.then(res => {
+				setEmails(res.data.emails);
+			})
+	}, [dc, uid]);
+
+	useEffect(() => {
+		triggerFetch();
+	}, [isComposeOpen]);
 
 	return (
 		<>

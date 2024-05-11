@@ -40,8 +40,17 @@
             PGHOST=/tmp psql --dbname=postgres -c "CREATE DATABASE emulator;"
             PGHOST=/tmp psql --dbname=emulator -c "CREATE EXTENSION vector;"
           '';
+          npm-install = "npm i --prefix=./email-app";
         };
       };
-      previews = {};
+      previews = {
+        enable = true;
+        previews = {
+          web = {
+            command = ["npm" "run" "dev" "--prefix" "./email-app" "--" "--port" "$PORT" "--hostname" "0.0.0.0"];
+            manager = "web";
+          };
+        };
+      };
     };
 }
