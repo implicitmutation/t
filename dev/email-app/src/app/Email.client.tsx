@@ -7,22 +7,28 @@ import { ListInboxResponse, listInbox, deleteEmail } from '@email-app/email'
 import dataConnect from "@/data-connect";
 
 interface Props {
-	uid: string;
 	initialEmails: ListInboxResponse['emails'];
+	firstEmail: ListInboxResponse['emails'][0];
+	uid: string;
 	host: string;
 }
 
-export default function Email({initialEmails, uid, host}: Props) {
-	const [selectedEmail, setSelectedEmail] = useState(initialEmails[0]); // Default to the first email
+export default function Email({initialEmails, uid, host, firstEmail}: Props) {
+	const [selectedEmail, setSelectedEmail] = useState(firstEmail); // Default to the first email
 	const [isComposeOpen, setIsComposeOpen] = useState(false);
-	const [emails, setEmails] = useState<ListInboxResponse['emails']>([]);
+	const [emails, setEmails] = useState<ListInboxResponse['emails']>(initialEmails);
 	const dc = dataConnect(host);
 
 	const triggerFetch = useCallback(() => {
-		listInbox(dc, { uid })
-			.then(res => {
+		async function run() {
+			try {
+				const res = await listInbox(dc, { uid });
 				setEmails(res.data.emails);
-			})
+			} catch (e) {
+				console.error(e);
+			}
+		}
+		run();
 	}, [dc, uid]);
 
 	useEffect(() => {
@@ -81,9 +87,8 @@ export default function Email({initialEmails, uid, host}: Props) {
 						</p>
 					</div>
 
-					<article className="py-4">
-            {selectedEmail.content}
-          </article>
+					<article className="py-4" dangerouslySetInnerHTML={{ __html: selectedEmail.content }} />
+
 				</div>
 			</main>
 

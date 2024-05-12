@@ -1,6 +1,6 @@
 // "use client"; // This is a client component 👈🏽
 import Email from "./Email.client"
-import { listInbox } from '@email-app/email'
+import { listInbox, ListInboxResponse } from '@email-app/email'
 import dataConnect from "@/data-connect";
 
 export default async function Home() {
@@ -15,10 +15,61 @@ export default async function Home() {
 	// server we only need localhost.
 	const host = process.env.WEB_HOST!
 	const dc = dataConnect('localhost');
-	const { data } = await listInbox(dc, { uid })
+	let emails: ListInboxResponse['emails']  = [];
+	try {
+		const { data } = await listInbox(dc, { uid })
+		emails = data.emails
+	} catch(e) {
+		console.error(e)
+	}
+
+	if(emails.length === 0) {
+		emails.push({
+			id: "fake-email-id",
+			subject: "Run the Data Connect Emulator to get started",
+			date: new Date().toLocaleDateString(),
+			content: `
+					<p class="mb-4">
+						Run the Data Connect Emulator in Firebase Extension and seed the database with the example GQL files.
+					</p>
+					
+					<p class="mb-4">
+						To run the emulator, follow these steps:
+					</p>
+
+					<ol class="list-decimal ml-8 mb-4">
+						<li>Click the Firebase Extension to the left.</li>
+						<li>Click the Start Emulator button.</li>
+						<li>Open the dataconnect folder and run the insert scripts in the following order: <code>User_insert.gql</code>, <code>Email_insert.gql</code>, <code>EmailMeta_insert.gql</code>, and <code>Recipient_insert.gql.</code></li>
+					</ol>
+
+					<p class="mb-4">
+						Once the emulator is running, you should be able to see your emails in this app.
+					</p>
+			`,
+			sender: {
+					name: "Welcome!",
+					email: "welcome@example.com",
+					uid: "fdc-uid",
+			},
+			to: [
+				{
+					user: {
+						name: "Data Connect",
+						email: "data-connect@example.com",
+						uid: "fdc-uid",
+					},
+				}
+			],
+		})
+	}
+
+	const firstEmail = emails.at(0)!;
+
 	return (
 		<Email 
-			initialEmails={data.emails}
+			initialEmails={emails}
+			firstEmail={firstEmail}
 			uid={uid}
 			host={host}
 		 />
