@@ -15,7 +15,7 @@
     ];
     
     env = {
-      POSTGRESQL_CONN_STRING = "postgresql://user:mypassword@localhost:5432/emulator?sslmode=disable";
+      POSTGRESQL_CONN_STRING = "postgresql://user:mypassword@localhost:5432/dataconnect?sslmode=disable";
       FIRESQL_PORT = 9939;
     };
   
@@ -38,8 +38,8 @@
           setup = "node download.mjs";
           postgres = ''
             PGHOST=/tmp psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
-            PGHOST=/tmp psql --dbname=postgres -c "CREATE DATABASE emulator;"
-            PGHOST=/tmp psql --dbname=emulator -c "CREATE EXTENSION vector;"
+            PGHOST=/tmp psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
+            PGHOST=/tmp psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
           '';
           npm-install = "pnpm i --prefix=./email-app";
         };
