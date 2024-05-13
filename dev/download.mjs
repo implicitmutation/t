@@ -1,3 +1,9 @@
+/**
+ * 
+ * Please ignore this file. This is a temporary script we're using to make it easier to 
+ * update the emulator on the IDX machine.
+ * 
+ */
 import fs from 'fs';
 import https from 'https';
 

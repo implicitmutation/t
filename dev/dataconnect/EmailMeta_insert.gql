@@ -5,6 +5,8 @@
 # 3. Recipient_insert.gql
 # 4. EmailMeta_insert.gql
 #
+# This is one of many ways to run data seeds. You can create one large mutation or
+# have separate smaller files like this. You can also use the generated SDK to seed data as well.
 mutation {
 	demo: emailMeta_insert(data: {
     userUid: "user_tyler",

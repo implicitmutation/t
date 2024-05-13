@@ -25,3 +25,11 @@ type EmailMeta @table(key: ["user", "email"]) {
 	muted: Boolean!
 	snoozed: Date
 }
+
+type EmailStat @view(sql: """
+  SELECT 
+    COUNT(*) AS count
+  FROM email
+ """) {
+    count: Int
+}
