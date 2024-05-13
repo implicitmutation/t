@@ -11,6 +11,7 @@
       (pkgs.postgresql_15.withPackages (p: [ p.pgvector ]))
       pkgs.nodejs_20
       pkgs.python3
+      pkgs.nodePackages.pnpm
     ];
     
     env = {
@@ -40,7 +41,7 @@
             PGHOST=/tmp psql --dbname=postgres -c "CREATE DATABASE emulator;"
             PGHOST=/tmp psql --dbname=emulator -c "CREATE EXTENSION vector;"
           '';
-          npm-install = "npm i --prefix=./email-app";
+          npm-install = "pnpm i --prefix=./email-app";
         };
       };
       previews = {
