@@ -1,7 +1,7 @@
 {
   "dataconnect": {
     "source": "./dataconnect",
-    "location": "us-central-1"
+    "location": "us-central1"
   },
   "emulators": {
     "dataconnect": {
