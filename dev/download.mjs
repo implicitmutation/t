@@ -8,7 +8,7 @@ import fs from 'fs';
 import https from 'https';
 
 // Define the URLs of the files to download
-const emulatorUrl = 'https://firebasestorage.googleapis.com/v0/b/firemat-preview-drop/o/emulator%2Fdataconnect-emulator-windows-v1.2.0?alt=media&token=d17858e9-efc1-4910-8e6a-b14f60904642';
+const emulatorUrl = 'https://firebasestorage.googleapis.com/v0/b/firemat-preview-drop/o/emulator%2Fdataconnect-emulator-linux-v1.2.0?alt=media&token=9519fde9-a41a-4fc3-8f69-9574e5bcd3d8';
 
 // Define the file paths where the downloaded files will be saved
 const emulatorFile = '/home/user/.cache/firebase/emulators/dataconnect-emulator-1.2.0';
