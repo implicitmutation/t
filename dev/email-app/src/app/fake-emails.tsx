@@ -28,7 +28,7 @@ const fakeEmails: ListInboxResponse['emails'] = [{
 
       <ol class="list-decimal ml-8 mb-4 leading-8">
         <li>Click the Firebase Extension to the left (see attachment below).</li>
-        <li>Click the Start Emulator button.</li>
+        <li>Click the Connect to Local PostgreSQL button. Continue with the provided Postgres connection string</li>
         <li>Open the <code>/dataconnect</code> folder and run the insert scripts in the following order: <code>User_insert.gql</code>, <code>Email_insert.gql</code>, <code>EmailMeta_insert.gql</code>, and <code>Recipient_insert.gql.</code></li>
         <li>Refresh the IDX preview panel to pick up the changes.</li>
       </ol>
@@ -41,6 +41,7 @@ const fakeEmails: ListInboxResponse['emails'] = [{
       <p class="mb-4 flex flex-col gap-y-4">
         <iframe class="rounded-md" width="560" height="315" src="https://www.youtube.com/embed/7OdVatEI85o?si=7hgOoc2OChGyAHH8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <img src="/extension.png" alt="The Firebase Extension" class="rounded-lg" />
+        <img src="/psql.png" alt="The connection string input" class="rounded-lg" />
         <img src="/insert-scripts.png" alt="A screenshot of a GQL insert script" class="rounded-lg" />
       </p>
   `,
