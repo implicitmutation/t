@@ -16,7 +16,7 @@
     
     env = {
       POSTGRESQL_CONN_STRING = "postgresql://user:mypassword@localhost:5432/dataconnect?sslmode=disable";
-      FIRESQL_PORT = 9939;
+      FIRESQL_PORT = "9939";
     };
   
     idx.extensions = [
