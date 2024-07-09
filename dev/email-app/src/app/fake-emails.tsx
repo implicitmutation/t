@@ -28,7 +28,7 @@ const fakeEmails: ListInboxResponse['emails'] = [{
 
       <ol class="list-decimal ml-8 mb-4 leading-8">
         <li>Click the Firebase Extension to the left (see attachment below).</li>
-        <li>Click the Connect to Local PostgreSQL button. Continue with the provided Postgres connection string.</li>
+        <li>Click the Connect to Local PostgreSQL button. Note: this IDX template includes a built-in Postgres instance, with the connection string pre-configured. Continue with the provided Postgres connection string. </li>
         <li>Open the <code>/dataconnect</code> folder and run the insert scripts in the following order: <code>User_insert.gql</code>, <code>Email_insert.gql</code>, <code>EmailMeta_insert.gql</code>, and <code>Recipient_insert.gql.</code></li>
         <li>Refresh the IDX preview panel to pick up the changes.</li>
       </ol>

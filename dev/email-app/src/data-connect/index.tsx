@@ -3,7 +3,8 @@ import { getDataConnect, connectDataConnectEmulator } from 'firebase/data-connec
 import { connectorConfig } from '@email-app/email'
 
 export default (host: string = 'localhost') => {
-	const firebaseApp = initializeApp({});
+	// Note: When connecting to a prod instance, please replace the empty config with your firebase config provided in the console.
+	const firebaseApp = initializeApp({ });
 	const dataConnect = getDataConnect(firebaseApp, connectorConfig)
 	const isBrowser = typeof process !== 'undefined' && process.browser;
 
