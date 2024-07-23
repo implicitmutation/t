@@ -1,8 +1,8 @@
 { pkgs, ... }: 
   let firebase-ext = pkgs.fetchurl {
     url =
-      "https://firebasestorage.googleapis.com/v0/b/firemat-preview-drop/o/vsix%2Ffirebase-vscode-0.4.4.vsix?alt=media&token=cae2dc68-f0c8-4ab5-9bbf-2cf6d8f98653";
-    hash = "sha256-QNnztX40gGGkXivvPk+E4XXwSyYMXWFcWJBfuCtE5L8=";
+      "https://firebasestorage.googleapis.com/v0/b/firemat-preview-drop/o/vsix%2Ffirebase-vscode-0.5.0.vsix?alt=media&token=de550bfc-69f7-49b0-84f4-0de7bcbefe86";
+    hash = "sha256-PtDOHuogYODbvzCJ6oi1rkL18YmPGzbN1jQMsifNABg=";
     name = "firebase.vsix";
   };
   in {
