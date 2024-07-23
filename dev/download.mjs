@@ -8,9 +8,9 @@ import fs from 'fs';
 import https from 'https';
 
 // Define the URLs of the files to download
-const emulatorUrl = 'https://firebasestorage.googleapis.com/v0/b/firemat-preview-drop/o/emulator%2Fdataconnect-emulator-linux-v1.2.4?alt=media&token=29a45ae0-8759-40e4-9731-f4775d8ab3ad';
+const emulatorUrl = 'https://firebasestorage.googleapis.com/v0/b/firemat-preview-drop/o/emulator%2Fdataconnect-emulator-linux-v1.3.0?alt=media&token=0d3b3937-1c03-43db-8d1d-77777851edde';
 // Define the file paths where the downloaded files will be saved
-const emulatorFile = '/home/user/.cache/firebase/emulators/dataconnect-emulator-1.2.4';
+const emulatorFile = '/home/user/.cache/firebase/emulators/dataconnect-emulator-1.3.0';
 const mkdirSync = (path) => {
   try {
     fs.mkdirSync(path, { recursive: true });
